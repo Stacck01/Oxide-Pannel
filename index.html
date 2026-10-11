@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#07100d">
+<title>Oxide Glass Panel</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;min-height:100dvh;display:grid;place-items:center;background:radial-gradient(circle at top,#1a4536,#070b09 68%);color:#ecfff6;font-family:-apple-system,Arial,sans-serif;padding:20px}
+.panel{width:min(330px,90vw);padding:21px;border:1px solid #54ffb566;border-radius:23px;background:linear-gradient(145deg,#17352edb,#080e0def);box-shadow:0 0 38px #00ff9920;backdrop-filter:blur(22px);animation:appear .5s ease}
+.top{display:flex;align-items:center;gap:10px}
+.dot{width:9px;height:9px;border-radius:50%;background:#54ffb5;box-shadow:0 0 12px #54ffb5}
+.top strong{letter-spacing:2px}
+.top strong span{color:#54ffb5}
+button{cursor:pointer}
+#hide{margin-left:auto;color:white;background:#ffffff14;border:1px solid #ffffff22;border-radius:9px;padding:5px 12px;font-size:20px}
+.subtitle{color:#8aa99d;font-size:10px;letter-spacing:2px;margin:13px 0}
+.status{padding:11px;border-radius:10px;background:#54ffb510;color:#54ffb5;font-size:11px;margin-bottom:14px}
+.item{display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid #ffffff12;font-size:14px}
+input{accent-color:#54ffb5;width:19px;height:19px}
+.reset{width:100%;margin-top:18px;padding:13px;border:1px solid #54ffb566;border-radius:10px;background:#54ffb514;color:#54ffb5;letter-spacing:2px}
+#reopen{position:fixed;bottom:25px;right:18px;background:#10251f;color:#54ffb5;padding:13px;border:1px solid #54ffb5;border-radius:12px}
+.note{font-size:10px;color:#8aa99d;text-align:center;margin-top:15px}
+[hidden]{display:none!important}
+@keyframes appear{from{opacity:0;transform:translateY(10px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}
+</style>
+</head>
+<body>
+<main class="panel" id="panel">
+<div class="top"><span class="dot"></span><strong>OXIDE <span>PANEL</span></strong><button id="hide" aria-label="Hide panel">−</button></div>
+<p class="subtitle">VISUAL CONTROL CENTER</p>
+<div class="status">● DEMO MODE ACTIVE</div>
+<div class="item"><label for="players">Player markers</label><input id="players" type="checkbox" checked></div>
+<div class="item"><label for="loot">Loot markers</label><input id="loot" type="checkbox"></div>
+<div class="item"><label for="distance">Distance display</label><input id="distance" type="checkbox" checked></div>
+<button class="reset" id="reset">RESET DEMO</button>
+<p class="note">Visual demo only · Not connected to any game</p>
+</main>
+<button id="reopen" hidden>OPEN PANEL</button>
+<script>
+const panel=document.querySelector('#panel');
+const reopen=document.querySelector('#reopen');
+document.querySelector('#hide').onclick=()=>{panel.hidden=true;reopen.hidden=false};
+reopen.onclick=()=>{panel.hidden=false;reopen.hidden=true};
+document.querySelector('#reset').onclick=()=>{
+document.querySelector('#players').checked=true;
+document.querySelector('#loot').checked=false;
+document.querySelector('#distance').checked=true;
+};
+</script>
+</body>
+</html>
